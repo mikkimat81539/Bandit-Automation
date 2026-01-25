@@ -1,0 +1,39 @@
+Read, Copy, Paste Passwords
+- When requesting password, I need to the program to grab the password file
+- Copy the data inside the row (line)
+    - Is there a way to go to a specific line in a file and indicate that to the computer?
+        - EXAMPLE: tell computer to go to line 6 in file
+        - If userInput is # than go to #
+
+PROGRAM STEPS
+- ACCESSING THE LEVEL
+    - Define the file (grabbing the file)
+        - file = getFile(’banditPasswords.txt’)
+    - Once we grab the file we need to read the data inside the file
+        - Reading each line in the file one at a time
+        - Copy the data in the line
+        - Paste into the ssh password terminal
+        - Execute terminal
+
+
+FOR READING EACH ROW
+- Read the file
+- Copy the data and store it in an empty list
+- Iterate through the list depending on userInput
+- EXAMPLE
+    - passwordList = []
+    - Append each row in the list
+        - each line will be in a list [0, 1, 2, 3, 4, 5, 6]
+    - If I type 0 it should go to the first element on the list
+
+- WHEN THE LEVEL IS COMPLETED
+    - Copy the password that we are given for the next level 
+    - Open the password file and paste it in a new line below the previous passwords
+
+THINGS TO CONSIDER
+- If 0 is typed than it needs to go to line 1
+    - Iteration starts at 0.
+        - Iteration[0] == Line 1
+        - Iteration[1] == Line 2
+- How to copy password when I am connected to remote computer (server)
+
