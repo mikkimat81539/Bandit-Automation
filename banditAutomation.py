@@ -8,7 +8,7 @@ def terminalAutomation():
 	
 	passwordList = []
 
-	with open("banditPasswords.txt") as file:
+	with open("/Users/mikaelamatthews/VS Code/banditPasswords/banditPasswords.txt") as file:
 		for i in file:
 			passwordList.append(i)
 			
