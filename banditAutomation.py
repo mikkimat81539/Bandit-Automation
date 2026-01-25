@@ -1,10 +1,20 @@
 import os
 
-def automation():
+def terminalAutomation():
 	banditSSH = f"bandit{userInput}@bandit.labs.overthewire.org"
 	
-	cmd = f'ssh {banditSSH} -p 2220'
-	os.system(cmd)
+	#cmd = f'ssh {banditSSH} -p 2220'
+	#os.system(cmd)
+	
+	passwordList = []
+
+	with open("banditPasswords.txt") as file:
+		for i in file:
+			passwordList.append(i)
+
+	passwordJoin = "".join(passwordList)
+	
+	print(passwordJoin)
 
 while True:
 	userExit = input("Do you want to start? YES or NO: ").upper()
@@ -20,7 +30,7 @@ while True:
 				break
 
 			else:
-				automation()
+				terminalAutomation()
 		except ValueError:
 			print("wrong input")
 
