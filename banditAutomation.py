@@ -11,10 +11,14 @@ def terminalAutomation():
 	with open("banditPasswords.txt") as file:
 		for i in file:
 			passwordList.append(i)
+			
+	passwordJoin = "".join(passwordList[userInput])
 
-	passwordJoin = "".join(passwordList)
-	
-	print(passwordJoin)
+	if userInput < len(passwordList):
+		try:
+			print(passwordList[userInput])
+		except IndexError:
+			print("Line does not exist")
 
 while True:
 	userExit = input("Do you want to start? YES or NO: ").upper()
