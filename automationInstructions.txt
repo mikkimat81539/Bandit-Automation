@@ -1,0 +1,43 @@
+Bandit Automation: Terminal Read and Run files
+** EXCEL FILE ** or ** Text File ****
+- Create a file - called banditPasswords.txt add bandit0 — DONE
+- Goal: inside the file passwords would be appended (added) to the file
+    - Store the passwords in the file
+        - file has data than append file (bandit0 should already be in file)
+- After I add the password to the file, than I would write a command that would read each line in the file and run it
+    - The computer would need to open the file
+    - When file is open than read each line in the file
+        - Iterate through each line
+    - Take the the data from each line, than paste in the terminal
+    - Execute terminal
+
+- Add this to program “ssh bandit#@bandit.labs.overthewire.org -p 2220”
+    - userInput = "Enter an absolute number between 0 and 34”
+    - Once userInputs than add to war-game command than run terminal
+
+- When grabbing the passwords, find a pattern
+    - Only letters (both uppercase and lowercase) and numbers.
+    - A fixed length (in the OverTheWire Bandit game, passwords are 32 characters).
+
+WHAT IT NEEDS TO LOOK LIKE
+- I would run the program (I created)
+- Inside the program would be the war-game command where I would first input a number -- DONE
+    - Depending on the the number I choose is where the program would start on the file
+        - So if I type # than I should be on line #
+- Execute terminal
+- Than terminal will ask for password
+- I need it to read each row in the file and paste once it finds right number
+- Once I find the password (patten) I need to copy the password and append in file
+- Than program would ask do you want to continue (Y or N)?
+    - If no than stop the program
+    - Otherwise (else), loop back to beginning.
+
+
+LINUX COMMANDS TO CONSIDER
+- Wc - word count 
+    - -c :The number of bytes in each input file is written to the standard output.  This will cancel out any prior usage of the -m option.
+    - -l      The number of lines in each input file is written to the standard output.
+        - This excludes the last line
+            - So I would need to probably create a blank line after pasting password
+- Touch - to make file
+

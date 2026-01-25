@@ -1,0 +1,18 @@
+SSH command terminal execution
+Ssh command = ssh bandit#@bandit.labs.overthewire.org -p 2220
+
+I need the program to take the userInput and apply it to the ssh command
+
+- TEST: print it out with number inputted
+
+EXAMPLE
+
+userInput : Enter a number between 0 and 34
+
+Def automation () {
+	sshCommand = f"bandit{userInput}@bandit.labs.overthewire.org"
+	cmd: ‘ssh sshCommand -p 2220’
+	os.system(cmd)
+	
+}
+
