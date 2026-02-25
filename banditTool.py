@@ -1,7 +1,16 @@
+import os
+
+# function to SSH connection
+def sshConnection():
+        ssh_conn = f"ssh bandit{lvlInput}@bandit.labs.overthewire.org -p 2220"
+
+        os.system(ssh_conn)
+
 # Function for user selecting bandit level
 def levelChoice():
         passwordList = []
         try:
+                global lvlInput
                 lvlInput = int(input("Enter a bandit level between 0 - 34: "))
 
                 if lvlInput > 34:
@@ -15,7 +24,8 @@ def levelChoice():
 
                         try:
                                 joinPasswords = "".join(passwordList[lvlInput])
-                                print(joinPasswords)
+                                # print(joinPasswords)
+                                sshConnection()
 
                         except IndexError:
                                 print("Password does not exist")                 
@@ -25,9 +35,8 @@ def levelChoice():
 
 # MAIN LOOP
 while True:
-        start = input("Do you want to start? Y or N: ").upper()
-
         try:
+                start = input("Do you want to start? Y or N: ").upper()
                 if start == "Y":
                         levelChoice()
 
