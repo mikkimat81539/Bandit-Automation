@@ -7,7 +7,17 @@ def levelChoice():
 		return lvlChoice() # applied recursion to loop back to start of function
 
 	else:
-		os.system(f"ssh bandit{lvlInput}@bandit.labs.overthewire.org -p 2220")			
+        	try:
+                	with open("otw_password.txt") as file:
+                        	lines = file.readlines()[lvlInput]
+
+                        	if lines.startswith(f"level{lvlInput}"):
+                                	print(lines.split(":", 1)[1].strip()) # Only grab the password
+
+                	os.system(f"ssh bandit{lvlInput}@bandit.labs.overthewire.org -p 2220")
+        	except IndexError:
+                	print(f"No password stored for level {lvlInput}\n")
+                	levelChoice()			
 
 # MAIN LOOP
 while True:
