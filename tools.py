@@ -1,4 +1,4 @@
-import os
+import os, sys
 
 # Function for user selecting bandit level
 def levelChoice():
@@ -27,18 +27,28 @@ def levelChoice():
 		return levelChoice()
 
 # MAIN LOOP
-while True:
-	start = input("Do you want to start? Y or N: ").upper()
+def main():
+	start = input("Do you want to start? Y or N or INPUT: ").upper()
 
 	try:
 		if start == "Y":
 			levelChoice()			
+			return main()
 
 		elif start == "N":
 			print("Program Ended")
-			break
+			sys.exit()
+
+		elif start == "INPUT":
+			with open("banditPasswords.txt", "a") as file:
+				password_input = input("Type password: ");
+				file.write(f"{password_input}")		
+				return main()
+
 		else:
 			print("Invalid response, enter Y or N")
 
 	except TypeError:
 		print("Invalid response, enter Y or N")
+
+main()
