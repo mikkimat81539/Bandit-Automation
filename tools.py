@@ -1,23 +1,30 @@
+import os
+
 # Function for user selecting bandit level
 def levelChoice():
-	lvlInput = int(input("Enter a bandit level between 0 - 34: "))
+	passwordList = []
+	try:
+		lvlInput = int(input("Enter a bandit level between 0 - 34: "))
 		
-	if lvlInput > 34:
-		print("Invalid response, input numbers between 0 - 34")
-		return lvlChoice() # applied recursion to loop back to start of function
+		if lvlInput > 34:
+			print("Invalid response, input numbers between 0 - 34")
+			return levelChoice # applied recursion to loop back to start of function
 
-	else:
-        	try:
-                	with open("otw_password.txt") as file:
-                        	lines = file.readlines()[lvlInput]
+		else:
+			with open("banditPasswords.txt") as file:
+				for i in file:
+					passwordList.append(i)	
+			
+			try:
+				joinPasswords = "".join(passwordList[lvlInput])
+				print(joinPasswords)
+				os.system(f"ssh bandit{lvlInput}@bandit.labs.overthewire.org -p 2220")
 
-                        	if lines.startswith(f"level{lvlInput}"):
-                                	print(lines.split(":", 1)[1].strip()) # Only grab the password
-
-                	os.system(f"ssh bandit{lvlInput}@bandit.labs.overthewire.org -p 2220")
-        	except IndexError:
-                	print(f"No password stored for level {lvlInput}\n")
-                	levelChoice()			
+			except IndexError:
+				print("Password does not exist")			
+	except ValueError:
+		print("Invalid response")
+		return levelChoice()
 
 # MAIN LOOP
 while True:
