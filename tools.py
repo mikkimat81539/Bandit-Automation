@@ -35,14 +35,17 @@ def main():
 			levelChoice()			
 			return main()
 
-		elif start == "N":
+		elif start == "N" or start == "EXIT":
 			print("Program Ended")
 			sys.exit()
 
 		elif start == "INPUT":
+			print("NOTE: when inputting you will have to exit the automation tool to save the txt file")
+
 			with open("banditPasswords.txt", "a") as file:
 				password_input = input("Type password: ");
 				file.write(f"{password_input}")		
+				file.close()
 				return main()
 
 		else:
