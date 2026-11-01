@@ -1,3 +1,5 @@
 banditPasswords.txt
 
 *.swp
+
+.DS_Store
